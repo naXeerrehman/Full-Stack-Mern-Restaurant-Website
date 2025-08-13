@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Edu+QLD+Hand:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+
+/*////////////////// Loading animation */
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2); /* Zoom in */
+  }
+  100% {
+    transform: scale(1); /* Zoom out */
+  }
+}
+
+.animate-zoomInOut {
+  animation: zoomInOut 2s ease-in-out infinite;
+}
+
+/*/////////////// Place holder adjusment for message*/
+
+.message-container input::placeholder {
+  position: relative;
+  bottom: 50px;
+}
+
+/*///////////////// Review section */
+
+.slick-slide {
+  margin-left: 0px;
+}
+
+.review-slider .slick-slide {
+  padding: 0 0px; /* Adjust the spacing between cards */
+}
+
+.review-slider .slick-track {
+  display: flex;
+}
+
+.review-slider .slick-slide img {
+  max-width: 100%;
+}
+
+.lora {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 2px;
+  font-style: normal;
+}
