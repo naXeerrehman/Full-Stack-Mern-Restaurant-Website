@@ -9,13 +9,13 @@ const FoodCategories = () => {
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState(null);
 
-  const API_URL = "http://localhost:5000/api/categories";
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   // Fetch all categories
   const fetchCategories = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(API_URL);
+      const response = await axios.get(`${BACKEND_URL}/api/categories`);
       setCategories(response.data);
     } catch (err) {
       console.error(
@@ -37,7 +37,7 @@ const FoodCategories = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(API_URL, { label: newCategory });
+      const response = await axios.post(`${BACKEND_URL}/api/categories${id}`, { label: newCategory });
       setCategories([...categories, response.data]);
       setNewCategory("");
     } catch (err) {
@@ -53,7 +53,7 @@ const FoodCategories = () => {
 
     try {
       setLoading(true);
-      const response = await axios.put(`${API_URL}/${id}`, {
+      const response = await axios.put(`${`${BACKEND_URL}/api/categories/`}/${id}`, {
         label: editValue,
       });
       setCategories(
@@ -71,7 +71,7 @@ const FoodCategories = () => {
   // Delete category
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_URL}/${id}`);
+      await axios.delete(`${BACKEND_URL}/api/categories/${id}`);
       setCategories(categories.filter((cat) => cat._id !== id));
     } catch (err) {
       console.error(err.response?.data?.message || "Failed to delete category");

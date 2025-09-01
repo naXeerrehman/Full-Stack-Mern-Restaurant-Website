@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const CategoryDropDown = ({ apiUrl, placeholder, onFilterChange }) => {
+const CategoryDropDown = ({placeholder, onFilterChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(apiUrl);
+ 
+        const response = await axios.get(`${BACKEND_URL}/api/categories`);
         setCategories(response.data);
         setError(null);
       } catch (err) {
