@@ -6,7 +6,7 @@ const corsMiddleware = (app) => {
 
   const allowedOrigins = [
     process.env.FRONTEND_URL,
-    "http://localhost:3000",
+    "https://full-stack-mern-restaurant-website-jet.vercel.app/",
     /\.vercel\.app$/,
   ];
 
